@@ -7,6 +7,8 @@ There are currently two client APIs for the Gordon Server available:
  - HTML5/JS
  - Adobe Flash/Air
 
+ ####[Live demo][4]
+
 ----------
 
 ### Install
@@ -137,3 +139,4 @@ protected function onConnect():void
   [1]: https://cloud.githubusercontent.com/assets/7307652/2774582/445a43cc-caba-11e3-92f2-a2bc7600b52b.png
   [2]: https://github.com/bma73/gordon-server
   [3]: https://github.com/bma73/gordon-examples
+  [4]: http://bma73.github.io/gordon-examples/html/
