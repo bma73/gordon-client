@@ -2,7 +2,7 @@
 ![Gordon Server Logo][1]
 Gordon Client
 =============
-There are currently two client APIs for the Gordon Server:
+There are currently two client APIs for the Gordon Server available:
 
  - HTML5/JS
  - Adobe Flash/Air
@@ -15,7 +15,7 @@ With [npm](http://npmjs.org) do:
 ```
 npm install gordon-client
 ```
-The HTML5/JS version is found under ``lib/js/src`` or ``lib/js/dist``.
+The HTML5/JS version is found under ``lib/js/src`` or ``lib/js/dist``.<br>
 The Adobe Flash/Air version is found under ``lib/as3/src`` or ``lib/as3/dist``.
 
 
