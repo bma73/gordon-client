@@ -1,0 +1,2347 @@
+{
+    "project": {
+        "name": "Gordon JS Client",
+        "version": "0.1.0"
+    },
+    "files": {
+        "lib\\js\\src\\client.js": {
+            "name": "lib\\js\\src\\client.js",
+            "modules": {
+                "gordon": 1
+            },
+            "classes": {
+                "Client": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\js\\src\\codes.js": {
+            "name": "lib\\js\\src\\codes.js",
+            "modules": {},
+            "classes": {
+                "Codes": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\js\\src\\data-object.js": {
+            "name": "lib\\js\\src\\data-object.js",
+            "modules": {},
+            "classes": {
+                "DataObject": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\js\\src\\event.js": {
+            "name": "lib\\js\\src\\event.js",
+            "modules": {},
+            "classes": {
+                "Event": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\js\\src\\room.js": {
+            "name": "lib\\js\\src\\room.js",
+            "modules": {},
+            "classes": {
+                "Room": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\js\\src\\user.js": {
+            "name": "lib\\js\\src\\user.js",
+            "modules": {},
+            "classes": {
+                "User": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib\\js\\src\\util.js": {
+            "name": "lib\\js\\src\\util.js",
+            "modules": {},
+            "classes": {
+                "Util": 1,
+                "Dictionary": 1,
+                "Timer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "gordon": {
+            "name": "gordon",
+            "submodules": {},
+            "classes": {
+                "Client": 1,
+                "Codes": 1,
+                "DataObject": 1,
+                "Event": 1,
+                "Room": 1,
+                "User": 1,
+                "Util": 1,
+                "Dictionary": 1,
+                "Timer": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib\\js\\src\\util.js",
+            "line": 312
+        }
+    },
+    "classes": {
+        "Client": {
+            "name": "Client",
+            "shortname": "Client",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gordon",
+            "namespace": "",
+            "file": "lib\\js\\src\\client.js",
+            "line": 35,
+            "description": "The Gordon Client",
+            "is_constructor": 1,
+            "extends": "Event",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "log",
+                            "description": "Enable logging to console. Default is true.",
+                            "type": "Boolean"
+                        },
+                        {
+                            "name": "pingInterval",
+                            "description": "Sets the interval in milliseconds. The default value is 10000.\nThe server uses the client pings to check if the current connection is still valid.",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "messageBufferSize",
+                            "description": "Sets the max buffer size for one message. Default is 1024 bytes.",
+                            "type": "Number"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Codes": {
+            "name": "Codes",
+            "shortname": "Codes",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gordon",
+            "namespace": "",
+            "file": "lib\\js\\src\\codes.js",
+            "line": 36,
+            "description": "Codes",
+            "static": 1
+        },
+        "DataObject": {
+            "name": "DataObject",
+            "shortname": "DataObject",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gordon",
+            "namespace": "",
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 35,
+            "description": "DataObject are used to synchronize states between the connected clients.\nEvery DataObject consists of key/value pairs, where keys must be unique integers (per DataObject).\n\nEvery {{#crossLink \"User\"}}{{/crossLink}} has his own DataObject. Additional DataObjects could be created by\na client or by the server.\n\nDataObjects could be used to represent objects like e.g. bots, windows, laser shots, grenades,\nbarrels, text blocks, cars etc.",
+            "example": [
+                "\n <pre>\n   var dataX = this.dataObject.getInt16(Player.KEY_X_POS);\n   var dataY = this.dataObject.getInt16(Player.KEY_Y_POS);\n   if (dataX != this._mouseX) {\n       this.dataObject.setInt16(Player.KEY_X_POS, this._mouseX);\n    }\n    if (dataY != this._mouseY) {\n        this.dataObject.setInt16(Player.KEY_Y_POS, this._mouseY);\n    }\n   this.dataObject.sendUpdates();\n  </pre>"
+            ],
+            "is_constructor": 1,
+            "extends": "Event"
+        },
+        "Event": {
+            "name": "Event",
+            "shortname": "Event",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gordon",
+            "namespace": "",
+            "file": "lib\\js\\src\\event.js",
+            "line": 40,
+            "description": "Event",
+            "is_constructor": 1
+        },
+        "Room": {
+            "name": "Room",
+            "shortname": "Room",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gordon",
+            "namespace": "",
+            "file": "lib\\js\\src\\room.js",
+            "line": 39,
+            "description": "A Room instance stores information about the current room.\nUsers and DataObjects are grouped in a room.",
+            "is_constructor": 1
+        },
+        "User": {
+            "name": "User",
+            "shortname": "User",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gordon",
+            "namespace": "",
+            "file": "lib\\js\\src\\user.js",
+            "line": 36,
+            "description": "Every client connected to the Gordon Server and joined to a session is represented as a user.<br>\nUsers can interact with each other by updating their {{#crossLink \"DataObject\"}}DataObjects{{/crossLink}}, sending {{#crossLink \"Client/sendChatMessage:method\"}}chat{{/crossLink}} or {{#crossLink \"Client/sendCustomMessage:method\"}}custom{{/crossLink}} messages.",
+            "is_constructor": 1,
+            "extends": "Event"
+        },
+        "Util": {
+            "name": "Util",
+            "shortname": "Util",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gordon",
+            "namespace": "",
+            "file": "lib\\js\\src\\util.js",
+            "line": 32,
+            "description": "Gordon Utilities",
+            "static": 1
+        },
+        "Dictionary": {
+            "name": "Dictionary",
+            "shortname": "Dictionary",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gordon",
+            "namespace": "",
+            "file": "lib\\js\\src\\util.js",
+            "line": 169,
+            "description": "Provides a basic dictionary class",
+            "example": [
+                "\n<pre>\n    var dict = new gordon.Dictionary();\n    dict.put('key1', {id:'1234', text:'Hello!'});\n    dict.put('key2', 0xc000);\n    console.log(dict.hasKey('key1'));\n    console.log(dict.keysToArray());\n</pre>"
+            ],
+            "is_constructor": 1
+        },
+        "Timer": {
+            "name": "Timer",
+            "shortname": "Timer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gordon",
+            "namespace": "",
+            "file": "lib\\js\\src\\util.js",
+            "line": 312,
+            "description": "Timer with timeDelta",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "intervalMillis",
+                    "description": "The update interval in milliseconds.",
+                    "type": "Number"
+                },
+                {
+                    "name": "autoStart",
+                    "description": "Starts the timer automatically. Default is true.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 62,
+            "description": "Connects to the Gordon Server",
+            "async": 1,
+            "itemtype": "method",
+            "name": "connect",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "The URL to connect to",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "eventName",
+                            "description": "Event name: {{#crossLink \"Event/connected:event\"}}{{/crossLink}}",
+                            "type": "String"
+                        }
+                    ]
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 79,
+            "description": "Joins a session and room\nThe client has to be connected.",
+            "async": 1,
+            "itemtype": "method",
+            "name": "join",
+            "params": [
+                {
+                    "name": "sessionId",
+                    "description": "The unique session id",
+                    "type": "String"
+                },
+                {
+                    "name": "roomId",
+                    "description": "The unique room id (unique in the according session scope)",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "The user's nickname",
+                    "type": "String"
+                },
+                {
+                    "name": "dataObject",
+                    "description": "An optional {{#crossLink \"DataObject\"}}{{/crossLink}} object which defines the\nuser data attached to this user.<br> If not provided, the system creates an empty {{#crossLink \"DataObject\"}}{{/crossLink}}.",
+                    "type": "DataObject",
+                    "optional": true
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "eventName",
+                            "description": "{{#crossLink \"Event/joined:event\"}}{{/crossLink}}",
+                            "type": "String"
+                        },
+                        {
+                            "name": "errorId",
+                            "description": "{{#crossLink \"ErrorCode\"}}{{/crossLink}} Will be null if everything is ok.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "user",
+                            "description": "{{#crossLink \"User\"}}{{/crossLink}} The User object.",
+                            "type": "String"
+                        }
+                    ]
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 103,
+            "description": "Change the user's room in the current session.\nThe client has to be connected and already has joined a session/room.",
+            "async": 1,
+            "itemtype": "method",
+            "name": "changeRoom",
+            "params": [
+                {
+                    "name": "newRoomId",
+                    "description": "The new room id",
+                    "type": "String"
+                },
+                {
+                    "name": "password",
+                    "description": "If the new room is locked with a password",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "eventName",
+                            "description": "{{#crossLink \"Event/roomChanged:event\"}}{{/crossLink}}",
+                            "type": "String"
+                        },
+                        {
+                            "name": "errorId",
+                            "description": "{{#crossLink \"ErrorCode\"}}{{/crossLink}} Will be null if everything is ok.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "room",
+                            "description": "{{#crossLink \"Room\"}}{{/crossLink}} The new Room object.",
+                            "type": "String"
+                        }
+                    ]
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 125,
+            "description": "Sets the interval in milliseconds. The default value is 10000.\nThe server uses the client pings to check if the current connection is still valid.",
+            "itemtype": "method",
+            "name": "setPingInterval",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The new value in millis.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 137,
+            "description": "Send a custom binary message to the server.\nThe message is broadcast to all users in the sender's current room.\nThe client has to be connected and already has joined a session/room.",
+            "example": [
+                "\n <code>\n  var view = new DataView(new ArrayBuffer(1 + 2));<br>\n  view.setInt8(0, 11);<br>\n  view.setUint16(1, 9999);<br>\n  g.sendCustomMessage(view.buffer);<br>\n  </code>"
+            ],
+            "itemtype": "method",
+            "name": "sendCustomMessage",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Buffer"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 157,
+            "description": "Sends a chat text to a specific user or to all users in the current room.\nThe client has to be connected and already has joined a session/room.",
+            "itemtype": "method",
+            "name": "sendChatMessage",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "The text message",
+                    "type": "String"
+                },
+                {
+                    "name": "targetId",
+                    "description": "The id of a {{#crossLink \"User\"}}{{/crossLink}} or 0 (default) to send to the message\nto all users in the current room.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 171,
+            "description": "Get the current ping value",
+            "itemtype": "method",
+            "name": "getCurrentPing",
+            "return": {
+                "description": "The ping value in milliseconds.",
+                "type": "Number"
+            },
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 181,
+            "description": "Gets the current websocket connection state.",
+            "itemtype": "method",
+            "name": "getConnectionState",
+            "return": {
+                "description": "<a href=\"https://developer.mozilla.org/en-US/docs/Web/API/WebSocket#Ready_state_constants\">state</a>",
+                "type": "Number"
+            },
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 191,
+            "description": "Gets the list of all available sessions.\nThe client has to be connected.",
+            "itemtype": "method",
+            "name": "getSessionList",
+            "return": {
+                "description": "callback.list The session list object.",
+                "type": "Object"
+            },
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 204,
+            "description": "Gets the room list of a session.\nThe client has to be connected.",
+            "itemtype": "method",
+            "name": "getRoomList",
+            "return": {
+                "description": "callback.list The room list object.",
+                "type": "Object"
+            },
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 218,
+            "description": "Gets the user list of a room.\nThe client has to be connected.",
+            "itemtype": "method",
+            "name": "getUserList",
+            "return": {
+                "description": "callback.list The user list object.",
+                "type": "Object"
+            },
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 233,
+            "description": "Disposes the client.",
+            "itemtype": "method",
+            "name": "dispose",
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 254,
+            "description": "Fired when web socket has connected",
+            "itemtype": "event",
+            "name": "connected",
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 260,
+            "description": "Fired when web socket has disconnected",
+            "itemtype": "event",
+            "name": "closed",
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 266,
+            "description": "Status of a join room request",
+            "itemtype": "event",
+            "name": "joined",
+            "params": [
+                {
+                    "name": "errorId",
+                    "description": "Null if everything is fine.",
+                    "type": "Number"
+                },
+                {
+                    "name": "user",
+                    "description": "Null if there's an error.",
+                    "type": "User"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 274,
+            "description": "Fired when a new user has joined the current room",
+            "itemtype": "event",
+            "name": "newUser",
+            "params": [
+                {
+                    "name": "user",
+                    "description": "",
+                    "type": "User"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 281,
+            "description": "Fired when a new user has left the current room",
+            "itemtype": "event",
+            "name": "userLeft",
+            "params": [
+                {
+                    "name": "user",
+                    "description": "",
+                    "type": "User"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 288,
+            "description": "Status of a change room request",
+            "itemtype": "event",
+            "name": "roomChanged",
+            "params": [
+                {
+                    "name": "errorId",
+                    "description": "Null if everything is fine.",
+                    "type": "Number"
+                },
+                {
+                    "name": "room",
+                    "description": "Null if there's an error.",
+                    "type": "Room"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 296,
+            "description": "Ping value updated",
+            "itemtype": "event",
+            "name": "ping",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 303,
+            "description": "A custom message has arrived",
+            "itemtype": "event",
+            "name": "customMessage",
+            "params": [
+                {
+                    "name": "dataView",
+                    "description": "",
+                    "type": "<a href=\"https://developer.mozilla.org/en-US/docs/Web/API/DataView\">DataView</a>"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 310,
+            "description": "A new room-wide chat message has been sent",
+            "itemtype": "event",
+            "name": "chatMessage",
+            "params": [
+                {
+                    "name": "sender",
+                    "description": "",
+                    "type": "User"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 318,
+            "description": "A private message has been sent",
+            "itemtype": "event",
+            "name": "privateChatMessage",
+            "params": [
+                {
+                    "name": "sender",
+                    "description": "",
+                    "type": "User"
+                },
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "User"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 327,
+            "description": "A new {{#crossLink \"DataObject\"}}{{/crossLink}} has been created",
+            "itemtype": "event",
+            "name": "newDataObject",
+            "params": [
+                {
+                    "name": "dataObject",
+                    "description": "",
+                    "type": "DataObject"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 334,
+            "description": "A {{#crossLink \"DataObject\"}}{{/crossLink}} has been removed",
+            "itemtype": "event",
+            "name": "dataObjectRemoved",
+            "params": [
+                {
+                    "name": "dataObject",
+                    "description": "",
+                    "type": "DataObject"
+                }
+            ],
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\client.js",
+            "line": 341,
+            "description": "Client has become the room master.",
+            "itemtype": "event",
+            "name": "master",
+            "class": "Client",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\codes.js",
+            "line": 45,
+            "itemtype": "property",
+            "name": "ERROR_SERVER_FULL",
+            "type": "Number",
+            "final": 1,
+            "class": "Codes",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\codes.js",
+            "line": 51,
+            "itemtype": "property",
+            "name": "ERROR_ROOM_FULL",
+            "type": "Number",
+            "final": 1,
+            "class": "Codes",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\codes.js",
+            "line": 57,
+            "itemtype": "property",
+            "name": "ERROR_SESSION_DOES_NOT_EXIST",
+            "type": "Number",
+            "final": 1,
+            "class": "Codes",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\codes.js",
+            "line": 63,
+            "itemtype": "property",
+            "name": "ERROR_ROOM_DOES_NOT_EXIST",
+            "type": "Number",
+            "final": 1,
+            "class": "Codes",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\codes.js",
+            "line": 69,
+            "itemtype": "property",
+            "name": "ERROR_WRONG_PASSWORD",
+            "type": "Number",
+            "final": 1,
+            "class": "Codes",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\codes.js",
+            "line": 75,
+            "itemtype": "property",
+            "name": "ERROR_MISC",
+            "type": "Number",
+            "final": 1,
+            "class": "Codes",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\codes.js",
+            "line": 81,
+            "description": "Sent if the user tries to change in the same room in which he is currently in.",
+            "itemtype": "property",
+            "name": "ERROR_SAME_ROOM",
+            "type": "Number",
+            "final": 1,
+            "class": "Codes",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\codes.js",
+            "line": 88,
+            "description": "Only the dataObject's creator is allowed to update it.",
+            "itemtype": "property",
+            "name": "UPDATE_POLICY_PRIVATE",
+            "type": "Number",
+            "final": 1,
+            "class": "Codes",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\codes.js",
+            "line": 95,
+            "description": "All users are allowed to update the dataObject.",
+            "itemtype": "property",
+            "name": "UPDATE_POLICY_PUPLIC",
+            "type": "Number",
+            "final": 1,
+            "class": "Codes",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 76,
+            "description": "Sets a string.",
+            "itemtype": "method",
+            "name": "setString",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "The string value",
+                    "type": "String"
+                },
+                {
+                    "name": "send",
+                    "description": "Immediately send the update to the server. Default is false.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 95,
+            "description": "Returns a string from a key.",
+            "itemtype": "method",
+            "name": "getString",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "String"
+            },
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 106,
+            "description": "Sets an object.",
+            "itemtype": "method",
+            "name": "setObject",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "The object",
+                    "type": "Object"
+                },
+                {
+                    "name": "send",
+                    "description": "Immediately send the update to the server. Default is false.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 126,
+            "description": "Returns an object from a key.",
+            "itemtype": "method",
+            "name": "getObject",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Object"
+            },
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 138,
+            "description": "Sets an Int8 value.",
+            "itemtype": "method",
+            "name": "setInt8",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "send",
+                    "description": "Immediately send the update to the server. Default is false.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 157,
+            "description": "Returns an Int8 value from a key.",
+            "itemtype": "method",
+            "name": "getInt8",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 169,
+            "description": "Sets an Uint8 value.",
+            "itemtype": "method",
+            "name": "setUint8",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "send",
+                    "description": "Immediately send the update to the server. Default is false.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 189,
+            "description": "Returns an Uint8 value from a key.",
+            "itemtype": "method",
+            "name": "getUint8",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 200,
+            "description": "Sets an Int16 value.",
+            "itemtype": "method",
+            "name": "setInt16",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "send",
+                    "description": "Immediately send the update to the server. Default is false.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 221,
+            "description": "Returns an Int16 value from a key.",
+            "itemtype": "method",
+            "name": "getInt16",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 232,
+            "description": "Sets an Uint16 value.",
+            "itemtype": "method",
+            "name": "setUint16",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "send",
+                    "description": "Immediately send the update to the server. Default is false.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 252,
+            "description": "Returns an Uint16 value from a key.",
+            "itemtype": "method",
+            "name": "getUint16",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 263,
+            "description": "Sets an Int32 value.",
+            "itemtype": "method",
+            "name": "setInt32",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "send",
+                    "description": "Immediately send the update to the server. Default is false.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 283,
+            "description": "Returns an Int32 value from a key.",
+            "itemtype": "method",
+            "name": "getInt32",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 294,
+            "description": "Sets an Uint32 value.",
+            "itemtype": "method",
+            "name": "setUint32",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "send",
+                    "description": "Immediately send the update to the server. Default is false.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 313,
+            "description": "Returns an Uint32 value from a key.",
+            "itemtype": "method",
+            "name": "getUint32",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 324,
+            "description": "Sets a Float32 value.",
+            "itemtype": "method",
+            "name": "setFloat32",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "send",
+                    "description": "Immediately send the update to the server. Default is false.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 343,
+            "description": "Returns an Float32 value from a key.",
+            "itemtype": "method",
+            "name": "getFloat32",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 354,
+            "description": "Sets a Float64 value.",
+            "itemtype": "method",
+            "name": "setFloat64",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "send",
+                    "description": "Immediately send the update to the server. Default is false.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 373,
+            "description": "Returns an Float64 value from a key.",
+            "itemtype": "method",
+            "name": "getFloat64",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The unique key",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 402,
+            "description": "Immediately sends all pending updates to the server.",
+            "itemtype": "method",
+            "name": "sendUpdates",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "broadcast",
+                    "description": "Broadcast the updates to all other users in the according room.\nDefault is true.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\data-object.js",
+            "line": 419,
+            "description": "Clear the pending updates list.",
+            "itemtype": "method",
+            "name": "clearUpdatedKeys",
+            "chainable": 1,
+            "class": "DataObject",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 54,
+            "description": "Adds a listener to the given event name.",
+            "itemtype": "method",
+            "name": "on",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The event name",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function"
+                }
+            ],
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 75,
+            "description": "Adds a listener to the given event name. (Substitute for {{#crossLink \"Event/on:method\"}}{{/crossLink}})",
+            "itemtype": "method",
+            "name": "addEventListener",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The event name",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function"
+                }
+            ],
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 86,
+            "description": "Adds a listener to the given event name.",
+            "itemtype": "method",
+            "name": "removeListener",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The event name",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function"
+                }
+            ],
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 103,
+            "description": "Adds a listener to the given event name, that is triggered only once.",
+            "itemtype": "method",
+            "name": "removeListener",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The event name",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function"
+                }
+            ],
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 122,
+            "description": "Remove all listeners of the given event name.",
+            "itemtype": "method",
+            "name": "removeListener",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The event name",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function"
+                }
+            ],
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 137,
+            "description": "Get all listeners to the given event name.",
+            "itemtype": "method",
+            "name": "listeners",
+            "params": [
+                {
+                    "name": "eventName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "list",
+                "type": "Array"
+            },
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 150,
+            "description": "Get the number of listener to the given event name.",
+            "itemtype": "method",
+            "name": "listenerCount",
+            "params": [
+                {
+                    "name": "eventName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 163,
+            "description": "Emits a event.\n\n<code>\n    this.emit('eventName', 1, 'status', 5);\n</code>",
+            "itemtype": "method",
+            "name": "emit",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "eventName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "...args",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Number"
+            },
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 193,
+            "description": "Disposes the event instance.",
+            "itemtype": "method",
+            "name": "dispose",
+            "chainable": 1,
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 205,
+            "description": "Fired when web socket has connected",
+            "itemtype": "event",
+            "name": "connected",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 212,
+            "description": "Fired when web socket has disconnected",
+            "itemtype": "event",
+            "name": "closed",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 219,
+            "description": "Status of a join room request",
+            "itemtype": "event",
+            "name": "joined",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 226,
+            "description": "Fired when a new user has joined the current room",
+            "itemtype": "event",
+            "name": "newUser",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 233,
+            "description": "Fired when a new user has left the current room",
+            "itemtype": "event",
+            "name": "userLeft",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 240,
+            "description": "Status of a change room request",
+            "itemtype": "event",
+            "name": "roomChanged",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 247,
+            "description": "Ping value updated",
+            "itemtype": "event",
+            "name": "ping",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 254,
+            "description": "A custom message has arrived",
+            "itemtype": "event",
+            "name": "customMessage",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 261,
+            "description": "A new room-wide chat message has been sent",
+            "itemtype": "event",
+            "name": "chatMessage",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 268,
+            "description": "A private message has been sent",
+            "itemtype": "event",
+            "name": "privateChatMessage",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 276,
+            "description": "A new {{#crossLink \"DataObject\"}}{{/crossLink}} has been created",
+            "itemtype": "event",
+            "name": "newDataObject",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 283,
+            "description": "A {{#crossLink \"DataObject\"}}{{/crossLink}} has been removed",
+            "itemtype": "event",
+            "name": "dataObjectRemoved",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 290,
+            "description": "A {{#crossLink \"DataObject\"}}{{/crossLink}} has been updated",
+            "itemtype": "event",
+            "name": "dataObjectUpdate",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\event.js",
+            "line": 297,
+            "description": "Client has become the room master.",
+            "itemtype": "event",
+            "name": "master",
+            "class": "Event",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\room.js",
+            "line": 52,
+            "description": "The master user of this room.\nEvery room has one dedicated master user. The master changes automatically\nif the current master user left the room.",
+            "itemtype": "property",
+            "name": "master",
+            "type": "User",
+            "class": "Room",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\room.js",
+            "line": 64,
+            "description": "Get a user by id.",
+            "itemtype": "method",
+            "name": "getUser",
+            "params": [
+                {
+                    "name": "id",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "User"
+            },
+            "class": "Room",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\room.js",
+            "line": 75,
+            "description": "Get all users.",
+            "itemtype": "method",
+            "name": "getUsers",
+            "return": {
+                "description": "list An array with User instances",
+                "type": "Array"
+            },
+            "class": "Room",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\room.js",
+            "line": 85,
+            "description": "Adds a dataObject to the room.",
+            "params": [
+                {
+                    "name": "dataObject",
+                    "description": "The dataObject to add",
+                    "type": "DataObject"
+                },
+                {
+                    "name": "password",
+                    "description": "If the new room is locked with a password",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "eventName",
+                            "description": "{{#crossLink \"Event/roomChanged:event\"}}{{/crossLink}}",
+                            "type": "String"
+                        },
+                        {
+                            "name": "errorId",
+                            "description": "{{#crossLink \"Codes\"}}{{/crossLink}} Will be null if everything is ok.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "room",
+                            "description": "{{#crossLink \"Room\"}}{{/crossLink}} The new Room object.",
+                            "type": "String"
+                        }
+                    ]
+                }
+            ],
+            "class": "Room",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\room.js",
+            "line": 101,
+            "description": "Get a dataObject by id.",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "dataObject",
+                "type": "DataObject"
+            },
+            "class": "Room",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\room.js",
+            "line": 111,
+            "description": "Get all dataObjects",
+            "return": {
+                "description": "list",
+                "type": "Array"
+            },
+            "class": "Room",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\room.js",
+            "line": 120,
+            "description": "Get the number of users in this room.",
+            "return": {
+                "description": "list",
+                "type": "Array"
+            },
+            "class": "Room",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\user.js",
+            "line": 46,
+            "description": "User id",
+            "itemtype": "property",
+            "name": "id",
+            "type": "{Number}",
+            "class": "User",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\user.js",
+            "line": 54,
+            "description": "Master flag.\nEvery room has one dedicated master.",
+            "itemtype": "property",
+            "name": "master",
+            "type": "{Boolean}",
+            "default": "false",
+            "class": "User",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\user.js",
+            "line": 64,
+            "description": "User DataObject",
+            "itemtype": "property",
+            "name": "dataObject",
+            "type": "{DataObject}",
+            "class": "User",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\user.js",
+            "line": 71,
+            "description": "User Room",
+            "itemtype": "property",
+            "name": "room",
+            "type": "{Room}",
+            "class": "User",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\user.js",
+            "line": 89,
+            "description": "User has left the room / server.",
+            "itemtype": "event",
+            "name": "dispose",
+            "params": [
+                {
+                    "name": "user",
+                    "description": "",
+                    "type": "User"
+                }
+            ],
+            "class": "User",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\user.js",
+            "line": 97,
+            "description": "User received a private message.",
+            "itemtype": "event",
+            "name": "chatMessage",
+            "params": [
+                {
+                    "name": "sender",
+                    "description": "",
+                    "type": "User"
+                },
+                {
+                    "name": "message",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "User",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 51,
+            "description": "Converts a buffer to an Utf-8 String",
+            "itemtype": "method",
+            "name": "bufferToUtf8String",
+            "params": [
+                {
+                    "name": "buffer",
+                    "description": "",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "length",
+                    "description": "",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "string",
+                "type": "String"
+            },
+            "class": "Util",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 66,
+            "description": "Converts an Utf-8 string to an Uint8 array",
+            "itemtype": "method",
+            "name": "bufferToUtf8String",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "buffer",
+                    "description": "",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "string",
+                "type": "String"
+            },
+            "class": "Util",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 91,
+            "description": "Copy bytes from source to target buffer",
+            "itemtype": "method",
+            "name": "copyBytes",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "The target buffer to copy to.",
+                    "type": "ArrayBuffer"
+                },
+                {
+                    "name": "source",
+                    "description": "The source buffer to copy from.",
+                    "type": "ArrayBuffer"
+                },
+                {
+                    "name": "targetOffsetBytes",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "sourceOffsetBytes",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "sourceLengthBytes",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "class": "Util",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 107,
+            "description": "Dumps a buffer to string",
+            "itemtype": "method",
+            "name": "hexDump",
+            "params": [
+                {
+                    "name": "sourceBuffer",
+                    "description": "",
+                    "type": "ArrayBuffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "length",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "string",
+                "type": "String"
+            },
+            "class": "Util",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 195,
+            "description": "Adds a key/value pair",
+            "itemtype": "method",
+            "name": "put",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "*"
+            },
+            "class": "Dictionary",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 210,
+            "description": "Gets a value",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "*"
+            },
+            "class": "Dictionary",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 221,
+            "description": "Removes a key",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "disposeValue",
+                    "description": "If 'true' and calls a 'dispose' method if owned by the value.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "*"
+            },
+            "class": "Dictionary",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 240,
+            "description": "Disposes the Dictionary instance",
+            "itemtype": "method",
+            "name": "dispose",
+            "params": [
+                {
+                    "name": "disposeValue",
+                    "description": "If 'true' and calls a 'dispose' method if owned by the values.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "Dictionary",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 253,
+            "description": "Checks if a key exists",
+            "itemtype": "method",
+            "name": "hasKey",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "value",
+                "type": "Boolean"
+            },
+            "class": "Dictionary",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 264,
+            "description": "Returns all keys as an array",
+            "itemtype": "method",
+            "name": "keysToArray",
+            "return": {
+                "description": "keys",
+                "type": "Array"
+            },
+            "class": "Dictionary",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 278,
+            "description": "Returns all values as an array",
+            "itemtype": "method",
+            "name": "valuesToArray",
+            "return": {
+                "description": "values",
+                "type": "Array"
+            },
+            "class": "Dictionary",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 292,
+            "description": "Clones the Dictionary",
+            "return": {
+                "description": "dict",
+                "type": "Dictionary"
+            },
+            "class": "Dictionary",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 329,
+            "description": "Stops the timer.",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "Timer",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 338,
+            "description": "Starts the timer.",
+            "itemtype": "method",
+            "name": "start",
+            "class": "Timer",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 364,
+            "description": "Adds an object to the update loop.\nThe added object must implement a 'loop' method.\nThe timer instance passes two params to the loop method:\n<pre>\n    delta The time delta factor.\n    time  The total time the timer is running.\n</pre>",
+            "example": [
+                "\n<pre>\n    var foo = {\n         loop: function(timeDelta, time) {\n             console.log('timeDelta:', timeDelta);\n             console.log('time:', time);\n         };\n    };\n    var timer = new gordon.Timer(1000 / 30);\n    timer.addObject(foo);\n\n</pre>"
+            ],
+            "itemtype": "method",
+            "name": "addObject",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "The object that should be added to the update loop.",
+                    "type": "Object"
+                }
+            ],
+            "class": "Timer",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 393,
+            "description": "Stops the timer.",
+            "itemtype": "method",
+            "name": "removeObject",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "The object that should be removed from the update loop.",
+                    "type": "Object"
+                }
+            ],
+            "class": "Timer",
+            "module": "gordon"
+        },
+        {
+            "file": "lib\\js\\src\\util.js",
+            "line": 405,
+            "description": "Disposes the timer.",
+            "itemtype": "method",
+            "name": "dispose",
+            "class": "Timer",
+            "module": "gordon"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\data-object.js:95"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\data-object.js:126"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\data-object.js:157"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\data-object.js:189"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\data-object.js:221"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\data-object.js:252"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\data-object.js:283"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\data-object.js:313"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\data-object.js:343"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\data-object.js:373"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\event.js:137"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\event.js:150"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\event.js:163"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\room.js:64"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\room.js:75"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\room.js:101"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\room.js:111"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\room.js:120"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\util.js:51"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\util.js:66"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\util.js:107"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\util.js:195"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\util.js:210"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\util.js:221"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\util.js:253"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\util.js:264"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\util.js:278"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib\\js\\src\\util.js:292"
+        },
+        {
+            "message": "Missing item type\nAdds a dataObject to the room.",
+            "line": " lib\\js\\src\\room.js:85"
+        },
+        {
+            "message": "Missing item type\nGet a dataObject by id.",
+            "line": " lib\\js\\src\\room.js:101"
+        },
+        {
+            "message": "Missing item type\nGet all dataObjects",
+            "line": " lib\\js\\src\\room.js:111"
+        },
+        {
+            "message": "Missing item type\nGet the number of users in this room.",
+            "line": " lib\\js\\src\\room.js:120"
+        },
+        {
+            "message": "Missing item type\nClones the Dictionary",
+            "line": " lib\\js\\src\\util.js:292"
+        }
+    ]
+}

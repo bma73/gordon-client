@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib\js\src\util.js - Gordon JS Client</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="Gordon JS Client"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.1.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Client.html">Client</a></li>
+            
+                <li><a href="../classes/Codes.html">Codes</a></li>
+            
+                <li><a href="../classes/DataObject.html">DataObject</a></li>
+            
+                <li><a href="../classes/Dictionary.html">Dictionary</a></li>
+            
+                <li><a href="../classes/Event.html">Event</a></li>
+            
+                <li><a href="../classes/Room.html">Room</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a href="../classes/User.html">User</a></li>
+            
+                <li><a href="../classes/Util.html">Util</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/gordon.html">gordon</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: lib\js\src\util.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*
+ * Copyright (c) 2014 Björn Acker | http://www.bjoernacker.de
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the &quot;Software&quot;), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/**
+ * @module gordon
+ */
+
+this.gordon = this.gordon || {};
+
+/**
+ * Gordon Utilities
+ *
+ * @class Util
+ * @static
+ */
+
+this.gordon.Util = {
+
+    toUtf8Buffer: function (str) {
+        var ret = [];
+        var l = str.length;
+        for (var i = 0; i &lt; l; ++i) {
+            var c = str.charCodeAt(i);
+            ret[i] = c;
+        }
+        return ret;
+    },
+
+    /**
+     * Converts a buffer to an Utf-8 String
+     *
+     * @method bufferToUtf8String
+     * @param {Buffer} buffer
+     * @param {Number} [offset]
+     * @param {Boolean} [length]
+     * @returns {String} string
+     */
+    bufferToUtf8String: function (buffer, offset, length) {
+        offset = offset || 0;
+        length = length || buffer.length;
+        return decodeURIComponent(encodeURIComponent(String.fromCharCode.apply(null, new Uint8Array(buffer, offset, length))));
+    },
+
+    /**
+     * Converts an Utf-8 string to an Uint8 array
+     *
+     * @method bufferToUtf8String
+     * @param {String} str
+     * @param {Buffer} buffer
+     * @param {Number} [offset]
+     * @returns {String} string
+     */
+    utf8StringToBuffer: function (str, buffer, offset) {
+        var strUtf8 = decodeURIComponent(encodeURIComponent(str));
+        var ab = new Uint8Array(buffer, offset, strUtf8.length);
+        for (var i = 0; i &lt; strUtf8.length; i++) {
+            ab[i] = strUtf8.charCodeAt(i);
+        }
+        return ab;
+    },
+
+    writeArrayToBuffer: function (view, offset, array) {
+        var l = array.length;
+        for (var i = 0; i &lt; l; ++i) {
+            view.setUint8(offset + i, array[i]);
+        }
+    },
+
+    /**
+     * Copy bytes from source to target buffer
+     *
+     * @method copyBytes
+     * @param {ArrayBuffer} target The target buffer to copy to.
+     * @param {ArrayBuffer} source The source buffer to copy from.
+     * @param {Number} [targetOffsetBytes]
+     * @param {Number} [sourceOffsetBytes]
+     * @param {Number} [sourceLengthBytes]
+     */
+    copyBytes: function (target, source, targetOffsetBytes, sourceOffsetBytes, sourceLengthBytes) {
+        var t = new Uint8Array(target);
+        var s = new Uint8Array(source, sourceOffsetBytes || 0, sourceLengthBytes || source.length);
+        t.set(s, targetOffsetBytes || 0);
+    },
+
+    /**
+     * Dumps a buffer to string
+     *
+     * @method hexDump
+     * @param {ArrayBuffer} sourceBuffer
+     * @param {Number} [offset]
+     * @param {Number} [length]
+     * @returns {String} string
+     */
+    hexDump: function (sourceBuffer, offset, length) {
+        &#x27;use strict&#x27;;
+        var fillUp = gordon.Util._fillUp;
+        var view = new DataView(sourceBuffer);
+        offset = offset || 0;
+        length = length || sourceBuffer.byteLength;
+
+        var out = fillUp(&quot;Offset&quot;, 8, &quot; &quot;) + &quot;  00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F\n&quot;;
+        var row = &quot;&quot;;
+        for (var i = 0; i &lt; length; i += 16) {
+            row += fillUp(offset.toString(16).toUpperCase(), 8, &quot;0&quot;) + &quot;  &quot;;
+            var n = Math.min(16, length - offset);
+            var string = &quot;&quot;;
+            for (var j = 0; j &lt; 16; ++j) {
+                if (j &lt; n) {
+                    var value = view.getUint8(offset);
+                    string += value &gt;= 32 ? String.fromCharCode(value) : &quot;.&quot;;
+                    row += fillUp(value.toString(16).toUpperCase(), 2, &quot;0&quot;) + &quot; &quot;;
+                    offset++;
+                }
+                else {
+                    row += &quot;   &quot;;
+                    string += &quot; &quot;;
+                }
+            }
+            row += &quot; &quot; + string + &quot;\n&quot;;
+        }
+        out += row;
+        return out;
+    },
+
+    _fillUp: function (value, count, fillWith) {
+        var l = count - value.length;
+        var ret = &quot;&quot;;
+        while (--l &gt; -1)
+            ret += fillWith;
+        return ret + value;
+    },
+
+    extend: function (subclass, superclass) {
+        var f = function() {};
+        f.prototype = superclass.prototype;
+        subclass.prototype = new f();
+        subclass.prototype.constructor = subclass;
+        subclass.superclass = superclass.prototype;
+        if (superclass.prototype.constructor == Object.prototype.constructor) {
+            superclass.prototype.constructor = superclass;
+        }
+    }
+};
+
+(function () {
+    &#x27;use strict&#x27;;
+    /**
+     * Provides a basic dictionary class
+     *
+     * @example
+     * &lt;pre&gt;
+     *     var dict = new gordon.Dictionary();
+     *     dict.put(&#x27;key1&#x27;, {id:&#x27;1234&#x27;, text:&#x27;Hello!&#x27;});
+     *     dict.put(&#x27;key2&#x27;, 0xc000);
+     *     console.log(dict.hasKey(&#x27;key1&#x27;));
+     *     console.log(dict.keysToArray());
+     * &lt;/pre&gt;
+     *
+     * @class Dictionary
+     * @constructor
+     */
+    var Dictionary = function (initData) {
+        this._values = {};
+        this.length = 0;
+        if (initData) {
+            for (var key in initData) {
+                this._values[key] = initData[key];
+            }
+        }
+    };
+    var p = Dictionary.prototype;
+
+    /**
+     * Adds a key/value pair
+     *
+     * @method put
+     * @param {String} key
+     * @param {*} value
+     * @returns {*} value
+     */
+    p.put = function (key, value) {
+        if (!this._values[key]) this.length++;
+        this._values[key] = value;
+        return value;
+    };
+
+
+    /**
+     * Gets a value
+     *
+     * @method get
+     * @param {String} key
+     * @returns {*} value
+     */
+    p.get = function (key) {
+        return this._values[key];
+    };
+
+    /**
+     * Removes a key
+     *
+     * @method remove
+     * @param {String} key
+     * @param {Boolean} [disposeValue] If &#x27;true&#x27; and calls a &#x27;dispose&#x27; method if owned by the value.
+     * @returns {*} value
+     */
+    p.remove = function (key, disposeValue) {
+        if (!this._values[key]) this.length--;
+        var value = this._values[key];
+        if (disposeValue) {
+            if (&quot;dispose&quot; in value) value.dispose();
+        }
+        this._values[key] = null;
+        delete this._values[key];
+        return value;
+    };
+
+    /**
+     * Disposes the Dictionary instance
+     *
+     * @method dispose
+     * @param {Boolean} [disposeValue] If &#x27;true&#x27; and calls a &#x27;dispose&#x27; method if owned by the values.
+     */
+    p.dispose = function (disposeValues) {
+        for (var i in this._values) {
+            this.remove(i, disposeValues);
+        }
+        this.length = 0;
+    };
+
+    /**
+     * Checks if a key exists
+     *
+     * @method hasKey
+     * @param {String} key
+     * @returns {Boolean} value
+     */
+    p.hasKey = function (key) {
+        return this._values[key] !== null;
+    };
+
+    /**
+     * Returns all keys as an array
+     *
+     * @method keysToArray
+     * @returns {Array} keys
+     */
+    p.keysToArray = function () {
+        var ret = [];
+        for (var key in this._values) {
+            ret.push(key);
+        }
+        return ret;
+    };
+
+    /**
+     * Returns all values as an array
+     *
+     * @method valuesToArray
+     * @returns {Array} values
+     */
+    p.valuesToArray = function () {
+        var ret = [];
+        for (var key in this._values) {
+            ret.push(this._values[key]);
+        }
+        return ret;
+    };
+
+    /**
+     * Clones the Dictionary
+     *
+     * @returns {Dictionary} dict
+     */
+    p.clone = function () {
+        var d = new gordon.Dictionary();
+        for (var i in this._values) {
+            d.put(i, this._values[i]);
+        }
+        return d;
+    };
+
+    gordon.Dictionary = Dictionary;
+}());
+
+
+(function () {
+    &#x27;use strict&#x27;;
+
+    /**
+     * Timer with timeDelta
+     *
+     * @class Timer
+     * @constructor
+     * @param {Number} intervalMillis The update interval in milliseconds.
+     * @param {Boolean} [autoStart] Starts the timer automatically. Default is true.
+     */
+
+    function Timer(intervalMillis, autoStart) {
+        autoStart = autoStart || true;
+        this.tickAmount = intervalMillis || 33.33333;
+        this.time = 0;
+        this._callbacks = [];
+        this._lastTime = this._startTime = Date.now();
+        if (autoStart) this.start();
+    }
+    /**
+     * Stops the timer.
+     *
+     * @method stop
+     */
+    Timer.prototype.stop = function(){
+        clearTimeout(this.timeout);
+    };
+
+    /**
+     * Starts the timer.
+     *
+     * @method start
+     */
+    Timer.prototype.start = function(intervalMillis){
+        this.tickAmount = intervalMillis || this.tickAmount;
+        this.timeout = setTimeout(this._loop.bind(this), this.tickAmount);
+    };
+
+    Timer.prototype._loop = function () {
+        var now = Date.now();
+        var delta = (now - this._lastTime) / this.tickAmount;
+        this.time += this.tickAmount;
+        var callbacks = this._callbacks;
+        var l = callbacks.length;
+        for (var i = 0; i &lt; l; ++i) {
+            var o = callbacks[i];
+            if (!o.loop) continue;
+            o.loop.apply(o, [delta, this.time]);
+        }
+        this._lastTime = now;
+        var diff = (now - this._startTime) - this.time;
+        this.timeout = setTimeout(this._loop.bind(this), (this.tickAmount - diff));
+    };
+
+    /**
+     * Adds an object to the update loop.
+     * The added object must implement a &#x27;loop&#x27; method.
+     * The timer instance passes two params to the loop method:
+     * &lt;pre&gt;
+     *     delta The time delta factor.
+     *     time  The total time the timer is running.
+     * &lt;/pre&gt;
+     *
+     * @example
+     * &lt;pre&gt;
+     *     var foo = {
+     *          loop: function(timeDelta, time) {
+     *              console.log(&#x27;timeDelta:&#x27;, timeDelta);
+     *              console.log(&#x27;time:&#x27;, time);
+     *          };
+     *     };
+     *     var timer = new gordon.Timer(1000 / 30);
+     *     timer.addObject(foo);
+     *
+     * &lt;/pre&gt;
+     *
+     * @method addObject
+     * @param {Object} object The object that should be added to the update loop.
+     */
+    Timer.prototype.addObject = function (object) {
+        this._callbacks.push(object);
+    };
+
+    /**
+     * Stops the timer.
+     *
+     * @method removeObject
+     * @param {Object} object The object that should be removed from the update loop.
+     */
+    Timer.prototype.removeObject = function (object) {
+        var index = this._callbacks.indexOf(object);
+        if (index == -1) return;
+        this._callbacks.splice(index, 1);
+    };
+
+    /**
+     * Disposes the timer.
+     *
+     * @method dispose
+     */
+    Timer.prototype.dispose = function () {
+
+        this._callbacks = null;
+    };
+    gordon.Timer = Timer;
+}());
+
+
+if (!ArrayBuffer.prototype.slice) {
+    ArrayBuffer.prototype.slice = function (start, end) {
+        var that = new Uint8Array(this);
+        if (end === undefined) end = that.length;
+        var result = new ArrayBuffer(end - start);
+        var resultArray = new Uint8Array(result);
+        for (var i = 0; i &lt; resultArray.length; i++)
+            resultArray[i] = that[i + start];
+        return result;
+    };
+}
+
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
