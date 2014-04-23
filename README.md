@@ -15,6 +15,12 @@ With [npm](http://npmjs.org) do:
 ```
 npm install gordon-client
 ```
+This will also download the Flex SDK (BIG!) to build the SWC file.
+If you don't want to rebuild the JS or AS3 version this might be better:
+```
+npm install gordon-client --production
+```
+
 The HTML5/JS version is found under ``lib/js/src`` or ``lib/js/dist``.<br>
 The Adobe Flash/Air version is found under ``lib/as3/src`` or ``lib/as3/dist``.
 
